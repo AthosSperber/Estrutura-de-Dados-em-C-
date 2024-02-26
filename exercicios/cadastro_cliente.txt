@@ -1,0 +1,80 @@
+#include <iostream>
+#include <string>
+#include <stdlib.h>
+
+using namespace std;
+
+string recebe_nome_cliente();
+int recebe_documento_cliente();
+float recebe_valor_compra();
+int recebe_quantidade_parcelas();
+
+
+int main(int argc, char** argv) {
+	
+	float valor_parcela = 0;
+	
+	struct cliente{
+		string nome_cliente;
+		int documento_cliente;
+		float valor_compra;
+		int quantidade_parcelas;
+	};
+	
+	struct cliente vetor_cliente;
+	
+	vetor_cliente.nome_cliente = recebe_nome_cliente();
+	vetor_cliente.documento_cliente = recebe_documento_cliente();
+	vetor_cliente.valor_compra = recebe_valor_compra();
+	vetor_cliente.quantidade_parcelas = recebe_quantidade_parcelas();
+	
+	cout << "Nome do cliente: " << vetor_cliente.nome_cliente << endl;
+	cout << "Documento do cliente: " << vetor_cliente.documento_cliente << endl;
+	cout << "Valor da compra do cliente: " << vetor_cliente.valor_compra << endl;
+	cout << "Quantidade de parcelas: " << vetor_cliente.quantidade_parcelas << endl;
+	
+	if(vetor_cliente.quantidade_parcelas <= 1){
+		valor_parcela = vetor_cliente.valor_compra;
+	}else{
+		valor_parcela = (vetor_cliente.valor_compra / vetor_cliente.quantidade_parcelas);
+	}
+	
+	cout << "Valor por parcela: " << valor_parcela << endl;
+	
+	return 0;
+}
+
+string recebe_nome_cliente() {
+    string nome_recebido;
+    cout << "Digite o nome do cliente: ";
+    cin >> nome_recebido;
+    return nome_recebido;
+}
+
+int recebe_documento_cliente() {
+    int documento_recebido;
+    cout << "Digite o documento do cliente: ";
+    cin >> documento_recebido;
+    return documento_recebido;
+}
+
+float recebe_valor_compra(){
+	float valor_recebido;
+	cout << "Digite o valor da compra: ";
+	cin >> valor_recebido;
+	return valor_recebido;
+}
+
+int recebe_quantidade_parcelas(){
+	int parcelas_recebido;
+	cout << "Digite a quantidade de parcelas ate 12x: ";
+	cin >> parcelas_recebido;
+	if(parcelas_recebido > 12){
+		cout << "Quantidade de parcelas ultrapassou o limite" <<  endl;
+		cout << "Digite a quantidade de parcelas ate 12x: ";
+		cin >> parcelas_recebido;
+		return parcelas_recebido;
+	}else{
+		return parcelas_recebido;
+	}
+}

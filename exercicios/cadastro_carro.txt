@@ -1,0 +1,62 @@
+#include <iostream>
+#include <string>
+#include <stdlib.h>
+
+using namespace std;
+
+string recebe_modelo();
+string recebe_marca();
+string recebe_placa();
+string recebe_cor();
+
+int main(int argc, char** argv) {
+	
+	struct carro {
+		string modelo;
+		string marca;
+		string placa;
+		string cor;
+		};
+		
+	struct carro vetor_carro;
+	
+	vetor_carro.modelo = recebe_modelo();
+	vetor_carro.marca = recebe_marca();
+	vetor_carro.placa = recebe_placa();
+	vetor_carro.cor = recebe_cor();
+	
+	cout << "Modelo = " << vetor_carro.modelo << endl;
+	cout << "Marca = " << vetor_carro.marca << endl;
+	cout << "Placa = " << vetor_carro.placa << endl;
+	cout << "Cor = " << vetor_carro.cor << endl;
+		
+	return 0;
+}
+
+string recebe_modelo() {
+    string modelo_recebido;
+    cout << "Digite o modelo do carro: ";
+    cin >> modelo_recebido;
+    return modelo_recebido;
+}
+
+string recebe_marca() {
+    string marca_recebido;
+    cout << "Digite a marca do carro: ";
+    cin >> marca_recebido;
+    return marca_recebido;
+}
+
+string recebe_placa() {
+    string placa_recebido;
+    cout << "Digite a placa do carro: ";
+    cin >> placa_recebido;
+    return placa_recebido;
+}
+
+string recebe_cor() {
+    string cor_recebido;
+    cout << "Digite a cor do carro: ";
+    cin >> cor_recebido;
+    return cor_recebido;
+}
